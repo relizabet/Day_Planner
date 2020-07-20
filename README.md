@@ -26,7 +26,7 @@ For this assignment we were asked to meet the following criteria:
 
 ## Getting Started
 
-To run the program please visit the <a href="_blank">Day Planner</a> page.
+To run the program please visit the <a href="https://relizabet.github.io/Day_Planner/">Day Planner</a> page.
 
 ### Examples of Program in Use
 
