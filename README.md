@@ -20,6 +20,7 @@ For this assignment we were asked to meet the following criteria:
 
 ### Built With
 
+- <a href="https://momentjs.com/">Moment.js</a>
 - <a href="https://getbootstrap.com/">Bootstrap</a>
 - <a href="https://developer.mozilla.org/en-US/docs/Web/javascript">JavaScript</a>
 - <a href="https://api.jquery.com/">jQuery</a>
