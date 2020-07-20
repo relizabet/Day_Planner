@@ -9,10 +9,10 @@ body {
 }
 
 header .overlay {
-  font-family: "Playfair Display", serif;
+  /* font-family: "Playfair Display", serif; */
   color: rgb(255, 255, 255);
   text-shadow: 1px 2px 3px rgb(44, 44, 44);
-  background-image: linear-gradient(135deg, #0cced169 10%, #15c87e6b 100%);
+  background-image: linear-gradient(170deg, #70eef0cf 10%, #89e8c0c9 100%);
 }
 
 header .overlay .lead {
@@ -51,16 +51,17 @@ textarea {
   border-radius: 15px;
 }
 
-.row {
+.row-extra {
   white-space: pre-wrap;
   height: 80px;
   border-top: 1px solid white;
 }
 
 .hour {
-  background-color: #ffffff;
-  color: #000000;
-  border-top: 1px dashed #000000;
+  /* background-color: #ffffff; */
+  color: #fff;
+  font-size: x-large;
+  /* border-top: 1px dashed #fff; */
 }
 
 .past {
@@ -82,8 +83,9 @@ textarea {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  background-color: #06aed5;
+  background-color: #70eef0cf;
   color: white;
+  font-size: larger;
 }
 
 .saveBtn i:hover {
