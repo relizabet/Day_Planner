@@ -40,9 +40,19 @@ $(displayDate).text(currentDate);
 //      if time === current time = blue
 //      if time < currrent time = green
 // [ ] assign blocks value based on time?
+//      [ ] with moment js set time, as opposed to doing it
+//          statically
+//          [ ] use these values to determine the color
 //
 
 // enter event into timeblock
+// [ ] get text input from whatever is typed in
+//     [ ] save to local storage
+//     [ ] store as new printed text in input
+//         [ ] change input element to a static one?
+//         [ ]
+// [ ] do this ^ when clicking the save button
+// [ ]
 
 // save event into timeblock on button click
 

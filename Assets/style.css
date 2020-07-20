@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&family=Source+Sans+Pro:wght@300&display=swap");
 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-size: 16px;
   line-height: 1;
@@ -58,7 +64,7 @@ textarea {
 }
 
 .hour {
-  /* background-color: #ffffff; */
+  font-family: "Playfair Display", serif;
   color: #fff;
   font-size: x-large;
   /* border-top: 1px dashed #fff; */
@@ -80,23 +86,15 @@ textarea {
 }
 
 .saveBtn {
-  border-left: 1px solid black;
+  border-left: 2px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   background-color: #70eef0cf;
   color: white;
-  font-size: larger;
+  font-size: 1em;
 }
 
 .saveBtn i:hover {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
-}
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-body {
-  height: 900px;
 }
