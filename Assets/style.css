@@ -30,6 +30,10 @@ h1 {
   margin-bottom: 30px;
 }
 
+.date-time {
+  font-family: "Playfair Display", serif;
+}
+
 h2.time-date {
   font-family: "Playfair Display", serif;
 }
@@ -64,7 +68,7 @@ textarea {
 }
 
 .hour {
-  font-family: "Playfair Display", serif;
+  /* font-family: "Playfair Display", serif; */
   color: #fff;
   font-size: x-large;
   /* border-top: 1px dashed #fff; */
@@ -91,7 +95,7 @@ textarea {
   border-bottom-right-radius: 15px;
   background-color: #70eef0cf;
   color: white;
-  font-size: 1em;
+  font-size: 1.25em;
 }
 
 .saveBtn i:hover {
