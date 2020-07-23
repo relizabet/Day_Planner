@@ -1,12 +1,37 @@
-// to duplicate time block
-const timeBlock = $(".time-block");
+// get current time
+let currentTime = moment().format("kk:mm");
+// get current date
+let currentDate = moment().format("dddd MMMM Do[,] YYYY");
+// get current hour
+let currentHour = moment().format("kk:00");
+let getInput = $("input");
 
 // planner header date and time
-let currentTime = $(".date-time");
-let currentDate = $(".time-date");
+// let currentTime;
+// // = $(".date-time");
+// let currentDate;
+// // = $(".time-date");
+
+//get hour class
+let hourClass = document.getElementsByClassName("hour");
 
 let displayTime = $("#display-time");
 let displayDate = $("#display-date");
+
+// set each hour with time
+
+// get current date && time
+let now = moment();
+console.log(now);
+console.log(JSON.stringify(now._d));
+
+//display current time
+$(displayTime).text(currentTime);
+//display current date
+$(displayDate).text(currentDate);
+
+// to duplicate time block
+const timeBlock = $(".time-block");
 
 // giving value to each hour
 // maybe an if here as well for if time this then use am/pm
@@ -25,6 +50,7 @@ function setPlannerTime() {
   return plannerTime;
 }
 
+// let pushText = text(setPlannerTime() + timeOf);
 // setPlannerTime();
 // console.log(setPlannerTime());
 
@@ -42,22 +68,26 @@ let plannerTimeArr = [
   $("div.hourFour").text(setPlannerTime() + timeOf),
   $("div.hourFive").text(setPlannerTime() + timeOf),
 ];
+console.log(plannerTimeArr);
 
-// set each hour with time
+console.log(plannerTimeSetArr);
 
-// get current date && time
-let now = moment();
-console.log(now);
+//change planner time
+for (let i = 0; i < plannerTimeArr.length; i++) {
+  //   console.log($("div.hourFive").innerText);
 
-// get current time
-currentTime = moment().format("kk:mm");
-// get current date
-currentDate = moment().format("dddd MMMM Do[,] YYYY");
+  if (hourClass[i].innerHTML < currentHour) {
+    getInput.addClass("past");
+  }
+  if (hourClass[i].innerHTML === currentHour) {
+    getInput.addClass("present");
+  }
+  if (hourClass[i].innerHTML < currentHour) {
+    getInput.addClass("future");
+  }
+}
 
-//display current time
-$(displayTime).text(currentTime);
-//display current date
-$(displayDate).text(currentDate);
+console.log($("input"));
 
 // Action Plan
 /////////////////////////
