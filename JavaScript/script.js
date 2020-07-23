@@ -1,16 +1,12 @@
 // get current time
-let currentTime = moment().format("kk:mm");
+const currentTime = moment().format("kk:mm");
 // get current date
 let currentDate = moment().format("dddd MMMM Do[,] YYYY");
 // get current hour
-let currentHour = moment().format("kk:00");
+let currentHour = moment().format("kk");
+let currentHourInt = JSON.parse(currentHour);
+console.log(currentHourInt);
 let getInput = $("input");
-
-// planner header date and time
-// let currentTime;
-// // = $(".date-time");
-// let currentDate;
-// // = $(".time-date");
 
 //get hour class
 let hourClass = document.getElementsByClassName("hour");
@@ -22,8 +18,7 @@ let displayDate = $("#display-date");
 
 // get current date && time
 let now = moment();
-console.log(now);
-console.log(JSON.stringify(now._d));
+// console.log(hourClass);
 
 //display current time
 $(displayTime).text(currentTime);
@@ -46,15 +41,13 @@ let plannerTimeSetArr = [];
 // this takes planner time and makes it add one
 function setPlannerTime() {
   plannerTime += 1;
-  $(plannerTimeSetArr).append(plannerTime);
+  plannerTimeSetArr.push(plannerTime);
+
   return plannerTime;
 }
 
-// let pushText = text(setPlannerTime() + timeOf);
-// setPlannerTime();
-// console.log(setPlannerTime());
+// console.log(plannerTime);
 
-// something like if plannerTime >
 // setting all of the time changes to an array
 let plannerTimeArr = [
   $("div.hourEight").text(setPlannerTime() + timeOf),
@@ -68,26 +61,24 @@ let plannerTimeArr = [
   $("div.hourFour").text(setPlannerTime() + timeOf),
   $("div.hourFive").text(setPlannerTime() + timeOf),
 ];
-console.log(plannerTimeArr);
 
-console.log(plannerTimeSetArr);
+// console.log(plannerTimeSetArr);
 
 //change planner time
 for (let i = 0; i < plannerTimeArr.length; i++) {
-  //   console.log($("div.hourFive").innerText);
-
-  if (hourClass[i].innerHTML < currentHour) {
+  console.log(plannerTimeSetArr[i]);
+  console.log(currentHourInt);
+  if (plannerTimeSetArr[i] < currentHourInt) {
+    console.log("past");
     getInput.addClass("past");
-  }
-  if (hourClass[i].innerHTML === currentHour) {
+  } else if (plannerTimeSetArr[i] === currentHourInt) {
     getInput.addClass("present");
-  }
-  if (hourClass[i].innerHTML < currentHour) {
+    console.log("present");
+  } else {
     getInput.addClass("future");
+    console.log("future");
   }
 }
-
-console.log($("input"));
 
 // Action Plan
 /////////////////////////
