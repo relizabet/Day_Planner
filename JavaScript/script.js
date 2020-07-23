@@ -1,3 +1,6 @@
+// to duplicate time block
+const timeBlock = $(".time-block");
+
 // planner header date and time
 let currentTime = $(".date-time");
 let currentDate = $(".time-date");
@@ -7,33 +10,47 @@ let displayDate = $("#display-date");
 
 // giving value to each hour
 // maybe an if here as well for if time this then use am/pm
-const timeAM = " AM";
-const timePM = " PM";
+const timeOf = ":00";
 
-// increasing planner time
-let plannerTime = 8;
+// planner time set to 7 so that the += 1 will start at 8
+let plannerTime = 7;
 
-// something like if plannerTime >
+// empty array to set an array to put times in, starting in military time *** adjust later
+let plannerTimeSetArr = [];
 
+// this takes planner time and makes it add one
 function setPlannerTime() {
   plannerTime += 1;
-  console.log(plannerTime);
-  if (plannerTime < 100) {
-    console.log("works");
-  }
+  $(plannerTimeSetArr).append(plannerTime);
+  return plannerTime;
 }
 
-setPlannerTime();
+// setPlannerTime();
+// console.log(setPlannerTime());
+
+// something like if plannerTime >
+// setting all of the time changes to an array
+let plannerTimeArr = [
+  $("div.hourEight").text(setPlannerTime() + timeOf),
+  $("div.hourNine").text(setPlannerTime() + timeOf),
+  $("div.hourTen").text(setPlannerTime() + timeOf),
+  $("div.hourEleven").text(setPlannerTime() + timeOf),
+  $("div.hourTwelve").text(setPlannerTime() + timeOf),
+  $("div.hourOne").text(setPlannerTime() + timeOf),
+  $("div.hourTwo").text(setPlannerTime() + timeOf),
+  $("div.hourThree").text(setPlannerTime() + timeOf),
+  $("div.hourFour").text(setPlannerTime() + timeOf),
+  $("div.hourFive").text(setPlannerTime() + timeOf),
+];
 
 // set each hour with time
-$("div.hourEight").text(`${plannerTime + timeAM}`);
 
 // get current date && time
 let now = moment();
 console.log(now);
 
 // get current time
-currentTime = moment().format("h:mm a");
+currentTime = moment().format("kk:mm");
 // get current date
 currentDate = moment().format("dddd MMMM Do[,] YYYY");
 
@@ -49,13 +66,14 @@ $(displayDate).text(currentDate);
 // [x] moment.js displays text of current day in div beneath header
 
 // timeblocks for 8am - 5pm
-// [x] option a. write out each block in html
+// [/] option a. write out each block in html
 //      doing this seems more stable
 //      these things will not change
 //      use input
 //      [ ] capture input with jQuery, store in local storage
-// [/] option b. create the blocks dynamically
-//      doing this might cause a rendering problem
+// [x] option b. create the blocks dynamically
+//      doing this might cause a rendering problem // no it doesn't
+//      [ ]
 
 // each timeblock color coded
 // past, present, future
