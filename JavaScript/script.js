@@ -3,7 +3,7 @@ $(document).ready(function () {
   const currentHour = moment().format("k");
   // convert currentHour into an integer so that it can be compared to plannerSetTimeArr
   const currentHourInt = JSON.parse(currentHour);
-  const getInput = document.getElementsByClassName("colorChange");
+  const colorChange = document.getElementsByClassName("colorChange");
 
   // visual value to time
   let timeOf = ":00";
@@ -43,17 +43,16 @@ $(document).ready(function () {
 
   // hook add button
   const addButton = $(".saveBtn");
-  let textInput = document.getElementsByClassName("input");
-  console.log(textInput);
+  let textInput = document.querySelector(".input");
 
   //change planner time
   for (let i = 0; i < plannerTimeArr.length; i++) {
     if (plannerTimeSetArr[i] < currentHourInt) {
-      $(getInput[i]).addClass("past");
+      $(colorChange[i]).addClass("past");
     } else if (plannerTimeSetArr[i] === currentHourInt) {
-      $(getInput[i]).addClass("present");
+      $(colorChange[i]).addClass("present");
     } else {
-      $(getInput[i]).addClass("future");
+      $(colorChange[i]).addClass("future");
     }
   }
 
@@ -63,25 +62,49 @@ $(document).ready(function () {
   let storePlans = [];
   // will need to stringify input probably
 
+  // --------------------------------------------------------------------------------------
+
+  let myStorePlans = {
+    name: "Rachel",
+    age: "56",
+  };
+
+  localStorage.setItem("myStorePlans", myStorePlans);
+  console.log(localStorage);
+
+  // --------------------------------------------------------------------------------------
+
   // capture information typed into input form
-  function getTextInput() {
-    // console.log(textInput[plannerTime]);
-    textInput[plannerTime] = console.log(plannerTime);
-  }
 
   // when add button is clicked the user input should be stored
   addButton.click(function (event) {
-    console.log("stored");
-    getTextInput();
+    let textInputText = textInput.value.trim();
+
+    storePlans.push(textInputText);
+
+    console.log(storePlans);
+
     // prevent reload
     event.preventDefault();
+    doStoreFunction();
+    // will reevaluate if this belongs here
   });
 
-  // clear the storage at the end of the day
-  function newDay() {
-    console.log("storage cleared");
-    // if currentHour reaches 0 (24??), clear everything out
+  function doStoreFunction() {
+    localStorage.setItem("input", "input text");
   }
+
+  // clear the storage at the end of the day
+  //   function newDay() {
+  //     console.log("storage cleared");
+  //     // if currentHour reaches 0 (24??), clear everything out
+  //     // localStorage.clear();
+  //     //idk if it's this simple
+  //   }
+
+  //   if (currentHour === 2) {
+  //     console.log("true");
+  //   }
 
   // --------------------------------------------------------------------------------------
 
