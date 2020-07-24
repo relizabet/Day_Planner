@@ -1,85 +1,68 @@
-// get current time
-const currentTime = moment().format("kk:mm");
-// get current date
-let currentDate = moment().format("dddd MMMM Do[,] YYYY");
-// get current hour
-let currentHour = moment().format("kk");
-let currentHourInt = JSON.parse(currentHour);
-console.log(currentHourInt);
-let getInput = $("input");
+$(document).ready(function () {
+  // get current time, date, & hour
+  const currentTime = moment().format("h:mm a");
+  const currentDate = moment().format("dddd MMMM Do[,] YYYY");
+  const currentHour = moment().format("kk");
+  // convert currentHour into an integer so that it can be compared to plannerSetTimeArr
+  const currentHourInt = JSON.parse(currentHour);
+  const getInput = document.getElementsByClassName("colorChange");
+  // get elements to display date and time
+  const displayTime = $("#display-time");
+  const displayDate = $("#display-date");
 
-//get hour class
-let hourClass = document.getElementsByClassName("hour");
+  // giving value to each hour
+  let timeOf = ":00";
+  const AM = " AM";
+  const PM = " PM";
 
-let displayTime = $("#display-time");
-let displayDate = $("#display-date");
+  // planner time set to 7 so that the += 1 will start at 8
+  let plannerTime = 7;
 
-// set each hour with time
+  // display current time & date
+  $(displayTime).text(currentTime);
+  $(displayDate).text(currentDate);
 
-// get current date && time
-let now = moment();
-// console.log(hourClass);
+  // empty array to set an array to put times in, starting in military time *** adjust later
+  let plannerTimeSetArr = [];
 
-//display current time
-$(displayTime).text(currentTime);
-//display current date
-$(displayDate).text(currentDate);
-
-// to duplicate time block
-const timeBlock = $(".time-block");
-
-// giving value to each hour
-// maybe an if here as well for if time this then use am/pm
-const timeOf = ":00";
-
-// planner time set to 7 so that the += 1 will start at 8
-let plannerTime = 7;
-
-// empty array to set an array to put times in, starting in military time *** adjust later
-let plannerTimeSetArr = [];
-
-// this takes planner time and makes it add one
-function setPlannerTime() {
-  plannerTime += 1;
-  plannerTimeSetArr.push(plannerTime);
-
-  return plannerTime;
-}
-
-// console.log(plannerTime);
-
-// setting all of the time changes to an array
-let plannerTimeArr = [
-  $("div.hourEight").text(setPlannerTime() + timeOf),
-  $("div.hourNine").text(setPlannerTime() + timeOf),
-  $("div.hourTen").text(setPlannerTime() + timeOf),
-  $("div.hourEleven").text(setPlannerTime() + timeOf),
-  $("div.hourTwelve").text(setPlannerTime() + timeOf),
-  $("div.hourOne").text(setPlannerTime() + timeOf),
-  $("div.hourTwo").text(setPlannerTime() + timeOf),
-  $("div.hourThree").text(setPlannerTime() + timeOf),
-  $("div.hourFour").text(setPlannerTime() + timeOf),
-  $("div.hourFive").text(setPlannerTime() + timeOf),
-];
-
-// console.log(plannerTimeSetArr);
-
-//change planner time
-for (let i = 0; i < plannerTimeArr.length; i++) {
-  console.log(plannerTimeSetArr[i]);
-  console.log(currentHourInt);
-  if (plannerTimeSetArr[i] < currentHourInt) {
-    console.log("past");
-    getInput.addClass("past");
-  } else if (plannerTimeSetArr[i] === currentHourInt) {
-    getInput.addClass("present");
-    console.log("present");
-  } else {
-    getInput.addClass("future");
-    console.log("future");
+  // this takes planner time and makes it add one
+  function setPlannerTime() {
+    plannerTime += 1;
+    plannerTimeSetArr.push(plannerTime);
+    return plannerTime;
   }
-}
 
+  // setting all of the time changes to an array
+  let plannerTimeArr = [
+    $("div.hourEight").text(setPlannerTime() + timeOf + AM),
+    $("div.hourNine").text(setPlannerTime() + timeOf + AM),
+    $("div.hourTen").text(setPlannerTime() + timeOf + AM),
+    $("div.hourEleven").text(setPlannerTime() + timeOf + AM),
+    $("div.hourTwelve").text(setPlannerTime() + timeOf + PM),
+    $("div.hourOne").text(setPlannerTime() + timeOf),
+    $("div.hourTwo").text(setPlannerTime() + timeOf),
+    $("div.hourThree").text(setPlannerTime() + timeOf),
+    $("div.hourFour").text(setPlannerTime() + timeOf),
+    $("div.hourFive").text(setPlannerTime() + timeOf),
+  ];
+
+  //change planner time
+  for (let i = 0; i < plannerTimeArr.length; i++) {
+    if (plannerTimeSetArr[i] < currentHourInt) {
+      $(getInput[i]).addClass("past");
+    } else if (plannerTimeSetArr[i] === currentHourInt) {
+      $(getInput[i]).addClass("present");
+    } else {
+      $(getInput[i]).addClass("future");
+    }
+  }
+
+  $("div.hourOne").text("1:00 PM");
+  $("div.hourTwo").text("2:00 PM");
+  $("div.hourThree").text("3:00 PM");
+  $("div.hourFour").text("4:00 PM");
+  $("div.hourFive").text("5:00 PM");
+});
 // Action Plan
 /////////////////////////
 
@@ -88,24 +71,16 @@ for (let i = 0; i < plannerTimeArr.length; i++) {
 
 // timeblocks for 8am - 5pm
 // [/] option a. write out each block in html
-//      doing this seems more stable
-//      these things will not change
-//      use input
-//      [ ] capture input with jQuery, store in local storage
 // [x] option b. create the blocks dynamically
-//      doing this might cause a rendering problem // no it doesn't
-//      [ ]
 
 // each timeblock color coded
 // past, present, future
-// [ ] js color code time
+// [x] js color code time
 //      if time > current time = grey
 //      if time === current time = blue
 //      if time < currrent time = green
-// [ ] assign blocks value based on time?
-//      [ ] with moment js set time, as opposed to doing it
-//          statically
-//          [ ] use these values to determine the color
+// [x] assign blocks value based on time?
+//      [x] use these values to determine the color
 //
 
 // enter event into timeblock
@@ -115,7 +90,6 @@ for (let i = 0; i < plannerTimeArr.length; i++) {
 //         [ ] change input element to a static one?
 //         [ ]
 // [ ] do this ^ when clicking the save button
-// [ ]
 
 // save event into timeblock on button click
 

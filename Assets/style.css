@@ -103,14 +103,14 @@ textarea {
   transition: all 0.3s ease-in-out;
 }
 
-.past {
+/* #past {
   background-color: rgb(182, 182, 182);
 }
 
-.present {
+#present {
   background-color: #77dd77;
 }
 
-.future {
+#future {
   background-color: #70eef0cf;
-}
+} */
