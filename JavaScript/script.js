@@ -10,16 +10,18 @@ $(document).ready(function () {
   const AM = " AM";
   const PM = " PM";
 
-  // let hourEight = $("div#hourEight");
-  // let hourNine = $("#hourNine");
-  // let hourTen = $("#hourTen");
-  // let hourEleven = $("#hourEleven");
-  // let hourTwelve = $("#hourTwelve");
-  // let hourOne = $("#hourOne");
-  // let hourTwo = $("#hourTwo");
-  // let hourThree = $("#hourThree");
-  // let hourFour = $("#hourFour");
-  // let hourFive = $("#hourFive");
+  let hourEight = $("#hourEight");
+  let hourNine = $("#hourNine");
+  let hourTen = $("#hourTen");
+  let hourEleven = $("#hourEleven");
+  let hourTwelve = $("#hourTwelve");
+  let hourOne = $("#hourOne");
+  let hourTwo = $("#hourTwo");
+  let hourThree = $("#hourThree");
+  let hourFour = $("#hourFour");
+  let hourFive = $("#hourFive");
+
+  let hourInput;
 
   // planner time set to 7 so that the += 1 will start at 8
   let plannerTime = 7;
@@ -72,25 +74,46 @@ $(document).ready(function () {
   // -------------------------------------------------------------------------------------
   // Local Storage
 
+  function checkStorage() {
+    if (window.localStorage.length === 0) {
+      window.localStorage.setItem(hourInput, hourInputValue);
+      console.log("no local storage");
+    } else {
+      console.log("local storage");
+    }
+  }
+
+  checkStorage();
+
   addButton.click(function (event) {
     // idea to link from conversation with Chad Laflamme - https://github.com/cjlaflamme1
     event.preventDefault();
 
     const whichBtn = event.target;
     const hourName = $(whichBtn).attr("name");
-    const hourInput = "#hour" + hourName;
+    hourInput = "#hour" + hourName;
+    console.log(hourInput);
+
+    $(hourInput).text("overwrite");
 
     let hourInputValue = $(hourInput).val();
+    storePlans = JSON.parse(window.localStorage.getItem("storePlans"));
 
-    function createStorage() {
-      window.localStorage.setItem(hourInput, hourInputValue);
-    }
+    // let keyValue = {};
+    // keyValue[hourInput] = hourInputValue;
 
-    createStorage();
-    storePlans.push(localStorage.getItem(hourInput, hourInputValue));
+    window.localStorage.setItem(hourInput, hourInputValue);
 
-    console.log(storePlans);
+    // storePlans.push(keyValue);
+    // console.log(storePlans);
   });
+
+  // for (let i = 0; i < localStorage.length; i++) {
+  //   const key = localStorage.key[i];
+  //   console.log;
+  //   const value = localStorage.getItem(key);
+  //   $(hourInput).text += `${key}: ${value}`;
+  // }
 
   // clear the storage at the end of the day
   //   function newDay() {
@@ -112,37 +135,3 @@ $(document).ready(function () {
   $(hourFour).text("4:00 PM");
   $(hourFive).text("5:00 PM");
 });
-// Action Plan
-/////////////////////////
-
-// display current day
-// [x] moment.js displays text of current day in div beneath header
-
-// timeblocks for 8am - 5pm
-// [/] option a. write out each block in html
-// [x] option b. create the blocks dynamically
-
-// each timeblock color coded
-// past, present, future
-// [x] js color code time
-//      if time > current time = grey
-//      if time === current time = blue
-//      if time < currrent time = green
-// [x] assign blocks value based on time?
-//      [x] use these values to determine the color
-//
-
-// enter event into timeblock
-// [ ] get text input from whatever is typed in
-//     [ ] save to local storage
-//     [ ] store as new printed text in input
-//         [ ] change input element to a static one?
-//         [ ] localStorage.setItem("blah", "blah")
-//         [ ] localStorage.getItem("blah")
-//         [ ] localStorage.removeItem("blah", "blah")
-
-// [ ] do this ^ when clicking the save button
-
-// save event into timeblock on button click
-
-// on refresh the saved events stay
