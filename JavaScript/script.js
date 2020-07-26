@@ -10,12 +10,26 @@ $(document).ready(function () {
   const AM = " AM";
   const PM = " PM";
 
+  // let hourEight = $("div#hourEight");
+  // let hourNine = $("#hourNine");
+  // let hourTen = $("#hourTen");
+  // let hourEleven = $("#hourEleven");
+  // let hourTwelve = $("#hourTwelve");
+  // let hourOne = $("#hourOne");
+  // let hourTwo = $("#hourTwo");
+  // let hourThree = $("#hourThree");
+  // let hourFour = $("#hourFour");
+  // let hourFive = $("#hourFive");
+
   // planner time set to 7 so that the += 1 will start at 8
   let plannerTime = 7;
 
   // display current time & date (not set as variables because they were only used once)
   $("#display-time").text(moment().format("h:mm a"));
   $("#display-date").text(moment().format("dddd MMMM Do[,] YYYY"));
+
+  // empty array to store plans
+  let storePlans = [];
 
   // empty array to set an array to put times in, starting in military time *** adjust later
   let plannerTimeSetArr = [];
@@ -29,21 +43,20 @@ $(document).ready(function () {
 
   // setting all of the time changes to an array
   let plannerTimeArr = [
-    $("div#hourEight").text(setPlannerTime() + timeOf + AM),
-    $("div#hourNine").text(setPlannerTime() + timeOf + AM),
-    $("div#hourTen").text(setPlannerTime() + timeOf + AM),
-    $("div#hourEleven").text(setPlannerTime() + timeOf + AM),
-    $("div#hourTwelve").text(setPlannerTime() + timeOf + PM),
-    $("div#hourOne").text(setPlannerTime() + timeOf),
-    $("div#hourTwo").text(setPlannerTime() + timeOf),
-    $("div#hourThree").text(setPlannerTime() + timeOf),
-    $("div#hourFour").text(setPlannerTime() + timeOf),
-    $("div#hourFive").text(setPlannerTime() + timeOf),
+    $(hourEight).text(setPlannerTime() + timeOf + AM),
+    $(hourNine).text(setPlannerTime() + timeOf + AM),
+    $(hourTen).text(setPlannerTime() + timeOf + AM),
+    $(hourEleven).text(setPlannerTime() + timeOf + AM),
+    $(hourTwelve).text(setPlannerTime() + timeOf + PM),
+    $(hourOne).text(setPlannerTime() + timeOf),
+    $(hourTwo).text(setPlannerTime() + timeOf),
+    $(hourThree).text(setPlannerTime() + timeOf),
+    $(hourFour).text(setPlannerTime() + timeOf),
+    $(hourFive).text(setPlannerTime() + timeOf),
   ];
 
   // hook add button
   const addButton = $(".saveBtn");
-  let textInput = document.querySelector(".input");
 
   //change planner time
   for (let i = 0; i < plannerTimeArr.length; i++) {
@@ -56,43 +69,28 @@ $(document).ready(function () {
     }
   }
 
-  // --------------------------------------------------------------------------------------
+  // -------------------------------------------------------------------------------------
   // Local Storage
 
-  let storePlans = [];
-  // will need to stringify input probably
-
-  // --------------------------------------------------------------------------------------
-
-  let myStorePlans = {
-    name: "Rachel",
-    age: "56",
-  };
-
-  localStorage.setItem("myStorePlans", myStorePlans);
-  console.log(localStorage);
-
-  // --------------------------------------------------------------------------------------
-
-  // capture information typed into input form
-
-  // when add button is clicked the user input should be stored
   addButton.click(function (event) {
-    let textInputText = textInput.value.trim();
+    // idea to link from conversation with Chad Laflamme - https://github.com/cjlaflamme1
+    event.preventDefault();
 
-    storePlans.push(textInputText);
+    const whichBtn = event.target;
+    const hourName = $(whichBtn).attr("name");
+    const hourInput = "#hour" + hourName;
+
+    let hourInputValue = $(hourInput).val();
+
+    function createStorage() {
+      window.localStorage.setItem(hourInput, hourInputValue);
+    }
+
+    createStorage();
+    storePlans.push(localStorage.getItem(hourInput, hourInputValue));
 
     console.log(storePlans);
-
-    // prevent reload
-    event.preventDefault();
-    doStoreFunction();
-    // will reevaluate if this belongs here
   });
-
-  function doStoreFunction() {
-    localStorage.setItem("input", "input text");
-  }
 
   // clear the storage at the end of the day
   //   function newDay() {
@@ -108,11 +106,11 @@ $(document).ready(function () {
 
   // --------------------------------------------------------------------------------------
 
-  $("div#hourOne").text("1:00 PM");
-  $("div#hourTwo").text("2:00 PM");
-  $("div#hourThree").text("3:00 PM");
-  $("div#hourFour").text("4:00 PM");
-  $("div#hourFive").text("5:00 PM");
+  $(hourOne).text("1:00 PM");
+  $(hourTwo).text("2:00 PM");
+  $(hourThree).text("3:00 PM");
+  $(hourFour).text("4:00 PM");
+  $(hourFive).text("5:00 PM");
 });
 // Action Plan
 /////////////////////////
