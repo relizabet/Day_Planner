@@ -31,7 +31,9 @@ $(document).ready(function () {
   $("#display-date").text(moment().format("dddd MMMM Do[,] YYYY"));
 
   // empty array to store plans
-  let storePlans = [];
+  let storePlans = [{
+    hour:
+  }];
 
   // empty array to set an array to put times in, starting in military time *** adjust later
   let plannerTimeSetArr = [];
