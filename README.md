@@ -32,6 +32,7 @@ To run the program please visit the <a href="https://relizabet.github.io/Day_Pla
 ### Examples of Program in Use
 
 ![Day Planner](/Assets/planner.jpg)
+![Day Planner](/Assets/planner_text.jpg)
 
 ### Notes
 
