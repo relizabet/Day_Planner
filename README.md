@@ -1,4 +1,4 @@
-# Day_Planner
+# Day Planner
 
 ## About the Project
 
@@ -31,9 +31,11 @@ To run the program please visit the <a href="https://relizabet.github.io/Day_Pla
 
 ### Examples of Program in Use
 
-![This Picture]()
+![Day Planner](/Assets/planner.jpg)
 
 ### Notes
+
+My biggest challenge for this assignment was getting the local storage to actually display. The data does persist in local storage but I was unable to retrieve it in a way that it would persist on the page.
 
 ## Authors
 
