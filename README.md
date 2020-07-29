@@ -38,6 +38,10 @@ To run the program please visit the <a href="https://relizabet.github.io/Day_Pla
 
 My biggest challenge for this assignment was getting the local storage to actually display. The data does persist in local storage but I was unable to retrieve it in a way that it would persist on the page.
 
+### As of 07/28/2020
+
+The most recent commit was posted after the deadline, and is not intended to be graded. With the assistance of my tutor I was able to solve the localStorage persistance problem and wanted to update the code accordingly.
+
 ## Authors
 
 - **Rachel Campbell** - _complete work_ - [relizabet](https://github.com/relizabet)

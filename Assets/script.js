@@ -22,26 +22,15 @@ $(document).ready(function () {
   let hourFour = $("#hourFour");
   let hourFive = $("#hourFive");
 
+  // hook add button
+  const addButton = $(".saveBtn");
+
   // planner time set to 7 so that the += 1 will start at 8
   let plannerTime = 7;
 
   // display current time & date (not set as variables because they were only used once)
   $("#display-time").text(moment().format("h:mm a"));
   $("#display-date").text(moment().format("dddd MMMM Do[,] YYYY"));
-
-  // empty array to store plans
-  let myStorage = [
-    { "#hour8": "" },
-    { "#hour9": "" },
-    { "#hour10": "" },
-    { "#hour11": "" },
-    { "#hour12": "" },
-    { "#hour13": "" },
-    { "#hour14": "" },
-    { "#hour15": "" },
-    { "#hour16": "" },
-    { "#hour17": "" },
-  ];
 
   // empty array to set an array to put times in, starting in military time *** adjust later
   let plannerTimeSetArr = [];
@@ -67,10 +56,7 @@ $(document).ready(function () {
     $(hourFive).text(setPlannerTime() + timeOf),
   ];
 
-  // hook add button
-  const addButton = $(".saveBtn");
-
-  //change planner time
+  // //change planner time
   for (let i = 0; i < plannerTimeArr.length; i++) {
     if (plannerTimeSetArr[i] < currentHourInt) {
       $(colorChange[i]).addClass("past");
@@ -81,6 +67,13 @@ $(document).ready(function () {
     }
   }
 
+  // make hour time appear 12 hour format
+  $(hourOne).text("1:00 PM");
+  $(hourTwo).text("2:00 PM");
+  $(hourThree).text("3:00 PM");
+  $(hourFour).text("4:00 PM");
+  $(hourFive).text("5:00 PM");
+
   // when any add button is clicked, get value of input, set the local storage equal to it
   addButton.click(function (event) {
     // idea to link from conversation with Chad Laflamme - https://github.com/cjlaflamme1
@@ -88,14 +81,17 @@ $(document).ready(function () {
 
     const whichBtn = event.target;
     const hourName = $(whichBtn).attr("name");
-    let hourInput;
-    let hourInputValue;
 
-    hourInput = "#hour" + hourName;
-    hourInputValue = $(hourInput).val();
+    let hourInput = "#hour" + hourName;
+    let hourInputValue = $(hourInput).val();
 
-    window.localStorage.setItem("myStorage", JSON.stringify(hourInputValue));
+    window.localStorage.setItem(hourInput, hourInputValue);
   });
+
+  // get local storage and make data persistent
+  for (let i = 0; i <= 17; i++) {
+    $("#hour" + i).val(window.localStorage.getItem("#hour" + i));
+  }
 
   // clear the storage at the end of the day
   function newDay() {
@@ -105,10 +101,4 @@ $(document).ready(function () {
   }
 
   newDay();
-
-  $(hourOne).text("1:00 PM");
-  $(hourTwo).text("2:00 PM");
-  $(hourThree).text("3:00 PM");
-  $(hourFour).text("4:00 PM");
-  $(hourFive).text("5:00 PM");
 });
