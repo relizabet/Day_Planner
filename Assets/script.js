@@ -89,7 +89,7 @@ $(document).ready(function () {
   });
 
   // get local storage and make data persistent
-  for (let i = 0; i <= 17; i++) {
+  for (let i = 8; i <= 17; i++) {
     $("#hour" + i).val(window.localStorage.getItem("#hour" + i));
   }
 
