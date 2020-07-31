@@ -95,7 +95,7 @@ $(document).ready(function () {
 
   // clear the storage at the end of the day
   function newDay() {
-    if (currentHour === "24") {
+    if (currentHour === "23") {
       localStorage.clear();
     }
   }
