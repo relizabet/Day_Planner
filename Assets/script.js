@@ -36,11 +36,17 @@ $(document).ready(function () {
   let plannerTimeSetArr = [];
 
   // this takes planner time and makes it add one
-  function setPlannerTime() {
+  // function setPlannerTime() {
+  //   plannerTime += 1;
+  //   plannerTimeSetArr.push(plannerTime);
+  //   return plannerTime;
+  // }
+
+  let setPlannerTime = () => {
     plannerTime += 1;
     plannerTimeSetArr.push(plannerTime);
     return plannerTime;
-  }
+  };
 
   // setting all of the time changes to an array
   let plannerTimeArr = [
