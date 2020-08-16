@@ -1,5 +1,7 @@
 # Day Planner
 
+A Work Day Planner that allows the user to plan their activities for the day. At the end of the day the activites automatically clear to be used again for the next day.
+
 ## About the Project
 
 For this assignment we were asked to meet the following criteria:
@@ -33,6 +35,7 @@ To run the program please visit the <a href="https://relizabet.github.io/Day_Pla
 
 ![Day Planner](/Assets/planner.jpg)
 ![Day Planner](/Assets/planner_text.jpg)
+![Color Example](/Assets/colorexample.png)
 
 ### Notes
 
